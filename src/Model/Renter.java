@@ -5,9 +5,9 @@ public class Renter extends User {
 	private Listing newPropertyList;
 	private boolean subscribed;
 	
-	public Renter(String firstName, String lastName, boolean subscribed, Listing newPropertyList)
+	public Renter(String firstName, String lastName, int id, boolean subscribed, Listing newPropertyList)
 	{
-		super(firstName, lastName);
+		super(firstName, lastName, id);
 		this.setSubscribed(subscribed);
 		this.newPropertyList = newPropertyList;
 	}
