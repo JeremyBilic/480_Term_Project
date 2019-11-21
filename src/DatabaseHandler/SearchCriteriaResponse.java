@@ -2,7 +2,6 @@ package DatabaseHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import Model.Address;
 import Model.Landlord;
@@ -11,7 +10,7 @@ import Model.Property;
 
 
 public class SearchCriteriaResponse implements Response{
-	Listing listing;
+	private Listing listing;
 
 	public SearchCriteriaResponse() {
 		listing = new Listing();
@@ -54,6 +53,10 @@ public class SearchCriteriaResponse implements Response{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public Listing getListing() {
+		return listing;
 	}
 
 }
