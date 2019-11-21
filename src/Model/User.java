@@ -4,6 +4,7 @@ public class User {
 
 	protected String firstName;
 	protected String lastName;
+	protected int id;
 	
 	User(String firstName, String lastName)
 	{
