@@ -5,12 +5,12 @@ public class Landlord extends User {
 	private Listing ownedPropertyList;
 	private String email;
 	
-	Landlord(String firstName, String lastName, String email) {
+	public Landlord(String firstName, String lastName, String email) {
 		super(firstName, lastName);
 		setEmail(email);
 		setOwnedPropertyList(new Listing());
 	}
-	Landlord(String firstName, String lastName, String email, Listing ownedPropertyList) {
+	public Landlord(String firstName, String lastName, String email, Listing ownedPropertyList) {
 		super(firstName, lastName);
 		setEmail(email);
 		setOwnedPropertyList(ownedPropertyList);

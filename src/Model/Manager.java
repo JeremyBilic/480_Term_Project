@@ -7,7 +7,7 @@ public class Manager extends User{
 	private ArrayList<User> userList;
 	private Listing propertyLists;
 	
-	Manager(String firstName, String lastName, ArrayList<User> userList, Listing propertyLists)
+	public Manager(String firstName, String lastName, ArrayList<User> userList, Listing propertyLists)
 	{
 		super(firstName, lastName);
 		this.setUserList(userList);

@@ -6,12 +6,12 @@ public class Listing {
 
 	private ArrayList<Property> properties;
 
-	Listing()
+	public Listing()
 	{
 		setProperties(new ArrayList<Property>());
 	}
 	
-	Listing(ArrayList<Property> properties)
+	public Listing(ArrayList<Property> properties)
 	{
 		this.properties = properties;
 	}

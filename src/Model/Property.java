@@ -11,7 +11,7 @@ public class Property {
 	private String type;
 	private boolean furnished;
 	
-	Property(Address address, Landlord owner, int id, String state,
+	public Property(Address address, Landlord owner, int id, String state,
 			int numberOfBathrooms, int numberOfBedrooms, String type, boolean furnished)
 	{
 		this.setAddress(address);

@@ -6,7 +6,7 @@ public class User {
 	protected String lastName;
 	protected int id;
 	
-	User(String firstName, String lastName)
+	public User(String firstName, String lastName)
 	{
 		this.firstName = firstName;
 		this.lastName = lastName;

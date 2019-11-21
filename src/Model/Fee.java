@@ -4,7 +4,7 @@ public class Fee {
 
 	private double amount;
 	
-	Fee(double amount)
+	public Fee(double amount)
 	{
 		this.setAmount(amount);
 	}
