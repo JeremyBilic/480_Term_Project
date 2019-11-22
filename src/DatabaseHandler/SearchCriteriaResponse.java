@@ -40,7 +40,7 @@ public class SearchCriteriaResponse implements Response{
 				String fname = result.getString("fname");
 				String lname = result.getString("lname");
 				String email = result.getString("email");
-				int lid = result.getInt("lid");
+				int lid = result.getInt("uid");
 
 
 				Address address = new Address(street, quadrant, city, province, country);

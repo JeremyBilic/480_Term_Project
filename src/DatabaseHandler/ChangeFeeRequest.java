@@ -1,6 +1,6 @@
 package DatabaseHandler;
 
-public class ChangeFeeRequest implements Request{
+public class ChangeFeeRequest extends Request{
 
 	@Override
 	public void request() {

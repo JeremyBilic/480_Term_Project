@@ -1,6 +1,6 @@
 package DatabaseHandler;
 
-public class ProfileRequest implements Request{
+public class ProfileRequest extends Request{
 
 	@Override
 	public void request() {
