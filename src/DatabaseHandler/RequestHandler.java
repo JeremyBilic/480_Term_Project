@@ -12,7 +12,7 @@ public class RequestHandler {
 
 	private RequestHandler() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/toolshop", "toolServer", "toolServer.");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/prmsystem", "prms", "prms");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

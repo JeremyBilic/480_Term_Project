@@ -14,6 +14,13 @@ public class Manager extends User{
 		this.setUserList(userList);
 		this.setPropertyLists(propertyLists);
 	}
+	
+	public Manager(String firstName, String lastName, int id)
+	{
+		super(firstName, lastName, id);
+		this.setUserList(new ArrayList<User>());
+		this.setPropertyLists(new Listing());
+	}
 
 	public ArrayList<User> getUserList() {
 		return userList;

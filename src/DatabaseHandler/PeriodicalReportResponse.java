@@ -2,26 +2,24 @@ package DatabaseHandler;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Model.Address;
 import Model.Landlord;
-import Model.Listing;
 import Model.Property;
 
-
-public class SearchCriteriaResponse implements Response{
-	private Listing listing;
-
-	public SearchCriteriaResponse() {
-		listing = new Listing();
-	}
-
+public class PeriodicalReportResponse implements Response {
+	private int count;
+	private ArrayList<Property> properties;
+	
 	@Override
 	public void parseResponse(ResultSet result) {
-
+		properties = new ArrayList<Property>();
+		count = 0;
 		try {
-
 			while(result.next()) {
+				count++;
+				
 				int pid = result.getInt("pid");
 				String state = result.getString("state");
 				int numberOfBathrooms = result.getInt("bathrooms");
@@ -44,7 +42,7 @@ public class SearchCriteriaResponse implements Response{
 				Address address = new Address(street, quadrant, city, province, country);
 				Landlord landlord = new Landlord(fname, lname, lid, email);
 
-				listing.addProperty(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
+				properties.add(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
 						type, furnished));
 			}
 			
@@ -53,8 +51,12 @@ public class SearchCriteriaResponse implements Response{
 		}
 	}
 	
-	public Listing getListing() {
-		return listing;
+	public int getCount() {
+		return count;
+	}
+	
+	public ArrayList<Property> getProperties() {
+		return properties;
 	}
 
 }

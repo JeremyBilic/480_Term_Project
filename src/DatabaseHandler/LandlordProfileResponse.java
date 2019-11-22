@@ -5,20 +5,17 @@ import java.sql.SQLException;
 
 import Model.Address;
 import Model.Landlord;
-import Model.Listing;
 import Model.Property;
 
-
-public class SearchCriteriaResponse implements Response{
-	private Listing listing;
-
-	public SearchCriteriaResponse() {
-		listing = new Listing();
+public class LandlordProfileResponse implements Response{
+	private Landlord landlord;
+	
+	public LandlordProfileResponse(Landlord landlord) {
+		this.landlord = landlord;
 	}
-
+	
 	@Override
 	public void parseResponse(ResultSet result) {
-
 		try {
 
 			while(result.next()) {
@@ -35,26 +32,15 @@ public class SearchCriteriaResponse implements Response{
 				String province = result.getString("province");
 				String country = result.getString("country");
 
-				String fname = result.getString("fname");
-				String lname = result.getString("lname");
-				String email = result.getString("email");
-				int lid = result.getInt("uid");
-
-
 				Address address = new Address(street, quadrant, city, province, country);
-				Landlord landlord = new Landlord(fname, lname, lid, email);
 
-				listing.addProperty(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
+				landlord.getOwnedPropertyList().addProperty(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
 						type, furnished));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public Listing getListing() {
-		return listing;
 	}
 
 }

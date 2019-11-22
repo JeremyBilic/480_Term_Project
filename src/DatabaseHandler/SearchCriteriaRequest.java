@@ -15,11 +15,11 @@ public class SearchCriteriaRequest extends Request{
 	public void request() {
 		
 		String query = "SELECT *"
-				+ "FROM landlord, property"
-				+ "WHERE landlord.lid = property.lid ";
+				+ "FROM user, property"
+				+ "WHERE user.uid = property.uid ";
 		
 		if (!criteria.getState().isEmpty()) {
-			query += (" AND state = " + criteria.getState());
+			query += (" AND state = \"" + criteria.getState()) + "\"";
 		}
 		
 		if (!criteria.getNumberOfBathrooms().isEmpty()) {
@@ -31,7 +31,7 @@ public class SearchCriteriaRequest extends Request{
 		}
 		
 		if (!criteria.getType().isEmpty()) {
-			query += (" AND type = " + criteria.getType());
+			query += (" AND type = \"" + criteria.getType()) + "\"";
 		}
 		
 		if (!criteria.getFurnished().isEmpty()) {
@@ -39,19 +39,19 @@ public class SearchCriteriaRequest extends Request{
 		}
 		
 		if (!criteria.getAddress().getCity().isEmpty()) {
-			query += (" AND city = " + criteria.getAddress().getCity());
+			query += (" AND city = \"" + criteria.getAddress().getCity()) + "\"";
 		}
 		
 		if (!criteria.getAddress().getProvince().isEmpty()) {
-			query += (" AND province = " + criteria.getAddress().getProvince());
+			query += (" AND province = \"" + criteria.getAddress().getProvince())+ "\"";
 		}
 		
 		if (!criteria.getAddress().getQuadrant().isEmpty()) {
-			query += (" AND quadrant = " + criteria.getAddress().getQuadrant());
+			query += (" AND quadrant = \"" + criteria.getAddress().getQuadrant()) + "\"";
 		}
 		
 		if (!criteria.getAddress().getCountry().isEmpty()) {
-			query += (" AND country = " + criteria.getAddress().getCountry());
+			query += (" AND country = \"" + criteria.getAddress().getCountry()) + "\"";
 		}
 		
 		RequestHandler.getInstance().queryDatabase(query, response);
