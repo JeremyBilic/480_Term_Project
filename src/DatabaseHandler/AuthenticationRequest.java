@@ -1,6 +1,6 @@
 package DatabaseHandler;
 
-
+import Model.User;
 
 public class AuthenticationRequest extends Request{
 	private String username;
