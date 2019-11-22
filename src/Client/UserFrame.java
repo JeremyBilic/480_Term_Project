@@ -6,6 +6,10 @@ import java.awt.Point;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
+
+import Model.Address;
+import Model.Criteria;
+
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,40 +34,49 @@ public class UserFrame extends JFrame
 		
 		btnSearch = new JButton("Search");
 		panel.add(btnSearch);
+		btnSearch.addActionListener(new SearchButtonListener());
 		
 		list = new JList();
 		getContentPane().add(list, BorderLayout.CENTER);
 	}
 	
-	class DoubleClickListener implements MouseListener
+	class SearchButtonListener implements ActionListener
 	{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
+			PropertyInputBox theDialog = new PropertyInputBox();
+			theDialog.setFrameListener(new ActionListener()
 			{
-				JTable t = (JTable) e.getSource();
-				Point point = e.getPoint();
-				int row = t.rowAtPoint(point);
-				if(e.getClickCount() == 2 && t.getSelectedRow() != -1)
+				public void actionPerformed(ActionEvent evt)
 				{
-					
+					String action = evt.getActionCommand();
+					if(action.equals("OK"))
+					{
+						Address theAddress = new Address(theDialog.getStreet(), theDialog.getQuadrant(), 
+								theDialog.getCity(), theDialog.getProvince(), theDialog.getCountry());
+						
+						String furnished;
+						
+						if(theDialog.getFurnished().equals("Yes"))
+						{
+							furnished = "TRUE";
+						}
+						else if(theDialog.getFurnished().equals("No"))
+						{
+							furnished = "FALSE";
+						}
+						else
+						{
+							furnished = "";
+						}
+						
+						Criteria theCriteria = new Criteria(theAddress, theDialog.getState(), theDialog.getNumBathrooms(), 
+								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
+					}
 				}
-			}
+			});
+			theDialog.setVisible(true);
 		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {}
-
-		@Override
-		public void mouseExited(MouseEvent e) {}
-		
 	}
-	
 }
 
