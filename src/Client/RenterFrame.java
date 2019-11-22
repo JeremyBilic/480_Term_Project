@@ -1,11 +1,13 @@
 package Client;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
 
 import Model.Address;
 import Model.Criteria;
@@ -61,8 +63,9 @@ public class RenterFrame extends UserFrame
 			});
 			theDialog.setVisible(true);
 		}
-		
 	}
+	
+	
 	
 	class DoubleClickListener implements MouseListener
 	{
@@ -71,7 +74,17 @@ public class RenterFrame extends UserFrame
 		public void mouseClicked(MouseEvent e) {}
 
 		@Override
-		public void mousePressed(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {
+			{
+				JTable t = (JTable) e.getSource();
+				Point point = e.getPoint();
+				int row = t.rowAtPoint(point);
+				if(e.getClickCount() == 2 && t.getSelectedRow() != -1)
+				{
+					
+				}
+			}
+		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {}

@@ -1,17 +1,17 @@
 package Client;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
 
-public class PropertyInputBox extends JDialog implements ActionListener
+public class ManagePropertyWindow extends JDialog implements ActionListener
 {
 	private JTextField state;
 	private JTextField numBathrooms;
@@ -26,7 +26,7 @@ public class PropertyInputBox extends JDialog implements ActionListener
 	private JButton btnEnter;
 	private JButton btnCancel;
 	
-	public PropertyInputBox() {
+	public ManagePropertyWindow() {
 		setResizable(false);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
