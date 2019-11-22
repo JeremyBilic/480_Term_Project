@@ -11,6 +11,13 @@ public class Renter extends User {
 		this.setSubscribed(subscribed);
 		this.newPropertyList = newPropertyList;
 	}
+	
+	public Renter(String firstName, String lastName, int id, boolean subscribed)
+	{
+		super(firstName, lastName, id);
+		this.setSubscribed(subscribed);
+		this.newPropertyList = new Listing();
+	}
 
 	public Listing getNewPropertyList() {
 		return newPropertyList;
