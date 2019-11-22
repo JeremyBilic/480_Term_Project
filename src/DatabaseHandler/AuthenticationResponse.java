@@ -27,7 +27,8 @@ public class AuthenticationResponse implements Response{
 				
 				if (utype == 0) {
 					boolean subscribed = result.getBoolean("subscribed");
-					user = new Renter(fname, lname, uid, subscribed);
+					int lastSeen = result.getInt("lastid");
+					user = new Renter(fname, lname, uid, subscribed, lastSeen);
 				} else if (utype == 1) {
 					String email = result.getString("email");
 					user = new Landlord(fname, lname, uid, email);
