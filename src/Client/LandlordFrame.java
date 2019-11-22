@@ -1,4 +1,4 @@
-package FrontEnd;
+package Client;
 import javax.swing.JButton;
 
 public class LandlordFrame extends UserFrame
