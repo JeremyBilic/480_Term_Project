@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Address;
+import Model.Fee;
 import Model.Landlord;
 import Model.Manager;
 import Model.Property;
@@ -26,6 +27,7 @@ public class ManagerProfilePropertyResponse implements Response {
 				int numberOfBedrooms = result.getInt("bedrooms");
 				String type = result.getString("type");
 				boolean furnished = result.getBoolean("furnished");
+				double fee = result.getDouble("fee");
 
 				String street = result.getString("street");
 				String quadrant = result.getString("quadrant");
@@ -43,7 +45,7 @@ public class ManagerProfilePropertyResponse implements Response {
 				Landlord landlord = new Landlord(fname, lname, lid, email);
 
 				manager.getPropertyLists().addProperty(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
-						type, furnished));
+						type, furnished, new Fee(fee)));
 			}
 			
 		} catch (SQLException e) {
