@@ -6,11 +6,16 @@ import java.awt.Point;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.ListModel;
 
+import DatabaseHandler.SearchCriteriaRequest;
+import DatabaseHandler.SearchCriteriaResponse;
 import Model.Address;
 import Model.Criteria;
+import Model.Property;
 
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -26,6 +31,8 @@ public class UserFrame extends JFrame
 	
 	protected JList list;
 	
+	protected DefaultListModel listModel;
+	
 	public UserFrame() {
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -36,7 +43,7 @@ public class UserFrame extends JFrame
 		panel.add(btnSearch);
 		btnSearch.addActionListener(new SearchButtonListener());
 		
-		list = new JList();
+		list = new JList(listModel);
 		getContentPane().add(list, BorderLayout.CENTER);
 	}
 	
@@ -59,11 +66,11 @@ public class UserFrame extends JFrame
 						
 						if(theDialog.getFurnished().equals("Yes"))
 						{
-							furnished = "TRUE";
+							furnished = "true";
 						}
 						else if(theDialog.getFurnished().equals("No"))
 						{
-							furnished = "FALSE";
+							furnished = "false";
 						}
 						else
 						{
@@ -72,6 +79,13 @@ public class UserFrame extends JFrame
 						
 						Criteria theCriteria = new Criteria(theAddress, theDialog.getState(), theDialog.getNumBathrooms(), 
 								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
+						
+						SearchCriteriaRequest scr = new SearchCriteriaRequest(theCriteria);
+						for(Property p : scr.getResponse().getProperties())
+						{
+							listModel.addElement(p);
+						}
+						
 					}
 				}
 			});
