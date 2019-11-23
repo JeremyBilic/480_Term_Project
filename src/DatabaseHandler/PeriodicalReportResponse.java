@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Model.Address;
+import Model.Fee;
 import Model.Landlord;
 import Model.Property;
 
@@ -26,6 +27,7 @@ public class PeriodicalReportResponse implements Response {
 				int numberOfBedrooms = result.getInt("bedrooms");
 				String type = result.getString("type");
 				boolean furnished = result.getBoolean("furnished");
+				double fee = result.getDouble("fee");
 
 				String street = result.getString("street");
 				String quadrant = result.getString("quadrant");
@@ -43,7 +45,7 @@ public class PeriodicalReportResponse implements Response {
 				Landlord landlord = new Landlord(fname, lname, lid, email);
 
 				properties.add(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
-						type, furnished));
+						type, furnished, new Fee(fee)));
 			}
 			
 		} catch (SQLException e) {
