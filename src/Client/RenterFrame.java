@@ -65,8 +65,6 @@ public class RenterFrame extends UserFrame
 		}
 	}
 	
-	
-	
 	class DoubleClickListener implements MouseListener
 	{
 
@@ -95,6 +93,26 @@ public class RenterFrame extends UserFrame
 		@Override
 		public void mouseExited(MouseEvent e) {}
 		
+	}
+	
+	class LoginButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			LoginBox theDialog = new LoginBox();
+			theDialog.setFrameListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent evt)
+				{
+					String action = evt.getActionCommand();
+					if(action.equals("OK"))
+					{
+						
+					}
+				}
+			});
+			theDialog.setVisible(true);
+		}
 	}
 	
 }

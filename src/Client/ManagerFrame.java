@@ -1,26 +1,68 @@
 package Client;
 import javax.swing.JButton;
 import javax.swing.JList;
+
+import Model.Address;
+import Model.Criteria;
+
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ManagerFrame extends UserFrame
 {
+	private JButton btnManageFees;
+	private JButton btnPeriodicalReport;
+	private JButton btnListUsers;
+	private JButton btnListProperties;
+	
 	public ManagerFrame()
 	{
 		super();
 		
-		JButton btnManageFees = new JButton("Manage Fees");
+		btnManageFees = new JButton("Manage Fees");
 		panel.add(btnManageFees);
 		
-		JButton btnPeriodicalReport = new JButton("Periodical Report");
+		btnPeriodicalReport = new JButton("Periodical Report");
 		panel.add(btnPeriodicalReport);
 		
-		JButton btnListUsers = new JButton("List Users");
+		btnListUsers = new JButton("List Users");
 		panel.add(btnListUsers);
 		
-		JButton btnListProperties = new JButton("List Properties");
+		btnListProperties = new JButton("List Properties");
 		panel.add(btnListProperties);
 		
-		
+	}
+	
+	class ManageFeesButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+	
+	class PeriodicalReportButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+	
+	class ListUsersButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
+	}
+	
+	class ListPropertiesButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
 	}
 }

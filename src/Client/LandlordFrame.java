@@ -1,4 +1,7 @@
 package Client;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class LandlordFrame extends UserFrame
@@ -18,5 +21,13 @@ public class LandlordFrame extends UserFrame
 		btnPayFees = new JButton("Pay Fees");
 		panel.add(btnPayFees);
 		
+	}
+	
+	class PeriodicalReportButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
 	}
 }
