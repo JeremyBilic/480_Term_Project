@@ -33,7 +33,6 @@ public class UserFrame extends JFrame
 	protected JButton btnListUsers;
 	protected JButton btnListProperties;
 	
-	
 	protected JList list;
 	
 	public UserFrame() {

@@ -36,5 +36,9 @@ public class PeriodicalReportRequest extends Request{
 		periodical = new Periodical(numListed, numRented, numActive, rentedProps);
 		
 	}
+	
+	public Periodical getPeriodical() {
+		return periodical;
+	}
 
 }

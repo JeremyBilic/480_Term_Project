@@ -11,6 +11,7 @@ import Model.Criteria;
 public class MainController
 {
 	private UserFrame frame;
+	private PRMSystem prms;
 	
 	public MainController(UserFrame theFrame)
 	{
@@ -26,6 +27,10 @@ public class MainController
 		frame.setPeriodicalReportListener(new PeriodicalReportListener());
 		frame.setListUsersListener(new ListUsersListener());
 		frame.setListPropertiesListener(new ListPropertiesListener());
+	}
+	
+	public void setSystem(PRMSystem prms) {
+		this.prms = prms;
 	}
 	
 	class SearchListener implements ActionListener

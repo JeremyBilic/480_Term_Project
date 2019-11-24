@@ -9,11 +9,13 @@ public class Landlord extends User {
 		super(firstName, lastName, id);
 		setEmail(email);
 		setOwnedPropertyList(new Listing());
+		this.type = "landlord";
 	}
 	public Landlord(String firstName, String lastName, int id, String email, Listing ownedPropertyList) {
 		super(firstName, lastName, id);
 		setEmail(email);
 		setOwnedPropertyList(ownedPropertyList);
+		this.type = "landlord";
 	}
 
 	public Listing getOwnedPropertyList() {
