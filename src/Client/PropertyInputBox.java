@@ -27,7 +27,8 @@ public class PropertyInputBox extends JDialog implements ActionListener
 	private JButton btnCancel;
 	
 	public PropertyInputBox() {
-		setResizable(false);
+		this.setSize(700, 500);
+		setResizable(true);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();

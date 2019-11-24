@@ -18,6 +18,7 @@ public class LoginBox extends JDialog implements ActionListener
 	private JButton btnCancel;
 	
 	public LoginBox() {
+		this.setSize(500, 200);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
@@ -30,14 +31,14 @@ public class LoginBox extends JDialog implements ActionListener
 		getContentPane().add(panel_1, BorderLayout.SOUTH);
 		
 		btnEnter = new JButton("Enter");
+		panel_1.add(btnEnter);
 		btnEnter.setActionCommand("OK");
-		panel.add(btnEnter);
-		btnEnter.addActionListener(this);
 		
 		btnCancel = new JButton("Cancel");
+		panel_1.add(btnCancel);
 		btnCancel.setActionCommand("CANCEL");
-		panel.add(btnCancel);
 		btnCancel.addActionListener(this);
+		btnEnter.addActionListener(this);
 		
 		JPanel panel_2 = new JPanel();
 		getContentPane().add(panel_2, BorderLayout.CENTER);
