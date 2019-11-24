@@ -10,9 +10,10 @@ public class Property {
 	private int numberOfBedrooms;
 	private String type;
 	private boolean furnished;
+	private Fee fee;
 	
 	public Property(Address address, Landlord owner, int id, String state,
-			int numberOfBathrooms, int numberOfBedrooms, String type, boolean furnished)
+			int numberOfBathrooms, int numberOfBedrooms, String type, boolean furnished, Fee fee)
 	{
 		this.setAddress(address);
 		this.setOwner(owner);
@@ -22,6 +23,7 @@ public class Property {
 		this.setNumberOfBedrooms(numberOfBedrooms);
 		this.setType(type);
 		this.setFurnished(furnished);
+		this.setFee(fee);
 	}
 
 	public Address getAddress() {
@@ -86,6 +88,14 @@ public class Property {
 
 	public void setFurnished(boolean furnished) {
 		this.furnished = furnished;
+	}
+
+	public Fee getFee() {
+		return fee;
+	}
+
+	public void setFee(Fee fee) {
+		this.fee = fee;
 	}
 			
 	
