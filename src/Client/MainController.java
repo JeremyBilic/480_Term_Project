@@ -3,15 +3,16 @@ package Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-
 import Model.Address;
 import Model.Criteria;
+import Model.Listing;
+import Model.User;
 
 public class MainController
 {
 	private UserFrame frame;
 	private PRMSystem prms;
+	private User theUser;
 	
 	public MainController(UserFrame theFrame)
 	{
@@ -67,6 +68,8 @@ public class MainController
 						
 						Criteria theCriteria = new Criteria(theAddress, theDialog.getState(), theDialog.getNumBathrooms(), 
 								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
+						
+						Listing theListing = prms.search(theCriteria);
 					}
 				}
 			});
@@ -88,7 +91,27 @@ public class MainController
 					String action = evt.getActionCommand();
 					if(action.equals("OK"))
 					{
+						theUser = prms.authentication(theDialog.getUsername(), theDialog.getPassword());
 						
+						if(theUser != null)
+						{
+							frame.dispose();
+							
+							if(theUser.getType().equals("renter"))
+							{
+								frame = new RegisteredRenterFrame();
+							}
+							else if(theUser.getType().equals("landlord"))
+							{
+								frame = new LandlordFrame();
+							}
+							else
+							{
+								frame = new ManagerFrame();
+							}
+							
+							frame.setVisible(true);
+						}
 					}
 				}
 			});
