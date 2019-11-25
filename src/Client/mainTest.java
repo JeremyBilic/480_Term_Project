@@ -6,9 +6,9 @@ public class mainTest
 	{
 		//System.out.println("test");
 		//RenterFrame frame = new RenterFrame();
-		RegisteredRenterFrame frame = new RegisteredRenterFrame();
+		//RegisteredRenterFrame frame = new RegisteredRenterFrame();
 		//LandlordFrame frame = new LandlordFrame();
-		//ManagerFrame frame = new ManagerFrame();
+		ManagerFrame frame = new ManagerFrame();
 		MainController controller = new MainController(frame);
 		frame.setVisible(true);
 	}

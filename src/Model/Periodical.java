@@ -41,4 +41,9 @@ public class Periodical {
 	public void setNumActiveListing(int numActiveListing) {
 		this.numActiveListing = numActiveListing;
 	}
+	
+	public ArrayList<Property> getHousesRented()
+	{
+		return housesRented;
+	}
 }

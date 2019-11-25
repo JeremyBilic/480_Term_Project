@@ -201,6 +201,8 @@ public class MainController
 		{
 			System.out.println("test");
 			
+			PeriodicalReportFrame theReportFrame = new PeriodicalReportFrame(prms.requestPeriodical());
+			theReportFrame.setVisible(true);
 		}
 		
 	}

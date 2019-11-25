@@ -38,14 +38,11 @@ public class UserFrame extends JFrame
 	protected JButton btnListProperties;
 	
 	protected JTable table;
-	//private DefaultTableModel tableModel;
 	
 	public UserFrame() {
 		this.setSize(700, 500);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		//panelCenter = new JPanel();
-		//getContentPane().add(comp)
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
