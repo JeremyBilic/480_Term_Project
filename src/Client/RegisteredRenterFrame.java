@@ -11,11 +11,12 @@ public class RegisteredRenterFrame extends UserFrame
 	{
 		super();
 		
-		btnSubscribe = new JButton("Change Subscription");
-		panel.add(btnSubscribe);
-		
-		btnCheckSubscription = new JButton("Check Subscription");
-		panel.add(btnCheckSubscription);
-		
+		panel.remove(btnLogin);
+		panel.remove(btnManageProperties);
+		panel.remove(btnPayFees);
+		panel.remove(btnManageFees);
+		panel.remove(btnPeriodicalReport);
+		panel.remove(btnListUsers);
+		panel.remove(btnListProperties);
 	}
 }

@@ -28,12 +28,22 @@ public class UserFrame extends JFrame
 	protected JPanel panel;
 	
 	protected JButton btnSearch;
+	protected JButton btnLogin;
+	protected JButton btnSubscribe;
+	protected JButton btnCheckSubscription;
+	protected JButton btnManageProperties;
+	protected JButton btnPayFees;
+	protected JButton btnManageFees;
+	protected JButton btnPeriodicalReport;
+	protected JButton btnListUsers;
+	protected JButton btnListProperties;
 	
 	protected JList list;
 	
 	protected DefaultListModel listModel;
 	
 	public UserFrame() {
+		this.setSize(700, 500);
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		panel = new JPanel();
@@ -41,57 +51,88 @@ public class UserFrame extends JFrame
 		
 		btnSearch = new JButton("Search");
 		panel.add(btnSearch);
-		btnSearch.addActionListener(new SearchButtonListener());
+		
+		btnLogin = new JButton("Login");
+		panel.add(btnLogin);
+		
+		btnSubscribe = new JButton("Change Subscription");
+		panel.add(btnSubscribe);
+		
+		btnCheckSubscription = new JButton("Check Subscription");
+		panel.add(btnCheckSubscription);
+		
+		btnManageProperties = new JButton("Manage Properties");
+		panel.add(btnManageProperties);
+		
+		btnPayFees = new JButton("Pay Fees");
+		panel.add(btnPayFees);
+		
+		btnManageFees = new JButton("Manage Fees");
+		panel.add(btnManageFees);
+		
+		btnPeriodicalReport = new JButton("Periodical Report");
+		panel.add(btnPeriodicalReport);
+		
+		btnListUsers = new JButton("List Users");
+		panel.add(btnListUsers);
+		
+		btnListProperties = new JButton("List Properties");
+		panel.add(btnListProperties);
 		
 		listModel = new DefaultListModel();
 		list = new JList(listModel);
 		getContentPane().add(list, BorderLayout.CENTER);
 	}
 	
-	class SearchButtonListener implements ActionListener
+	public void setSearchListener(ActionListener listener)
 	{
-		public void actionPerformed(ActionEvent e)
-		{
-			PropertyInputBox theDialog = new PropertyInputBox();
-			theDialog.setFrameListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent evt)
-				{
-					String action = evt.getActionCommand();
-					if(action.equals("OK"))
-					{
-						Address theAddress = new Address(theDialog.getStreet(), theDialog.getQuadrant(), 
-								theDialog.getCity(), theDialog.getProvince(), theDialog.getCountry());
-						
-						String furnished;
-						
-						if(theDialog.getFurnished().equals("Yes"))
-						{
-							furnished = "true";
-						}
-						else if(theDialog.getFurnished().equals("No"))
-						{
-							furnished = "false";
-						}
-						else
-						{
-							furnished = "";
-						}
-						
-						Criteria theCriteria = new Criteria(theAddress, theDialog.getState(), theDialog.getNumBathrooms(), 
-								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
-						
-						SearchCriteriaRequest scr = new SearchCriteriaRequest(theCriteria);
-						for(Property p : scr.getResponse().getProperties())
-						{
-							listModel.addElement(p);
-						}
-						
-					}
-				}
-			});
-			theDialog.setVisible(true);
-		}
+		btnSearch.addActionListener(listener);
 	}
+	
+	public void setLoginListener(ActionListener listener)
+	{
+		btnLogin.addActionListener(listener);
+	}
+	
+	public void setSubscribeListener(ActionListener listener)
+	{
+		btnSubscribe.addActionListener(listener);
+	}
+	
+	public void setCheckSubscriptionListener(ActionListener listener)
+	{
+		btnCheckSubscription.addActionListener(listener);
+	}
+	
+	public void setManagePropertiesListener(ActionListener listener)
+	{
+		btnManageProperties.addActionListener(listener);
+	}
+	
+	public void setPayFeesListener(ActionListener listener)
+	{
+		btnPayFees.addActionListener(listener);
+	}
+	
+	public void setManageFeesListener(ActionListener listener)
+	{
+		btnManageFees.addActionListener(listener);
+	}
+	
+	public void setPeriodicalReportListener(ActionListener listener)
+	{
+		btnPeriodicalReport.addActionListener(listener);
+	}
+	
+	public void setListUsersListener(ActionListener listener)
+	{
+		btnListUsers.addActionListener(listener);
+	}
+	
+	public void setListPropertiesListener(ActionListener listener)
+	{
+		btnListProperties.addActionListener(listener);
+	}
+	
 }
 

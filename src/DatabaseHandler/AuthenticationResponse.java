@@ -28,11 +28,14 @@ public class AuthenticationResponse implements Response{
 				if (utype == 0) {
 					boolean subscribed = result.getBoolean("subscribed");
 					int lastSeen = result.getInt("lastid");
+					user.setType("renter");
 					user = new Renter(fname, lname, uid, subscribed, lastSeen);
 				} else if (utype == 1) {
 					String email = result.getString("email");
+					user.setType("landlord");
 					user = new Landlord(fname, lname, uid, email);
 				} else {
+					user.setType("manager");
 					user = new Manager(fname, lname, uid);
 				}
 				

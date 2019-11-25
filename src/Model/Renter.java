@@ -12,6 +12,7 @@ public class Renter extends User {
 		this.setSubscribed(subscribed);
 		this.newPropertyList = newPropertyList;
 		this.setLastSeenID(lastSeenID);
+		this.type = "renter";
 	}
 	
 	public Renter(String firstName, String lastName, int id, boolean subscribed, int lastSeenID)
@@ -20,6 +21,7 @@ public class Renter extends User {
 		this.setSubscribed(subscribed);
 		this.setLastSeenID(lastSeenID);
 		this.newPropertyList = new Listing();
+		this.type = "renter";
 	}
 
 	public Listing getNewPropertyList() {
