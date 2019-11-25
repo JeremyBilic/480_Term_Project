@@ -30,7 +30,6 @@ import java.awt.event.ActionEvent;
 public class UserFrame extends JFrame
 {
 	protected JPanel panel;
-	protected JPanel panelCenter;
 	
 	protected JButton btnSearch;
 	protected JButton btnLogin;
@@ -44,8 +43,6 @@ public class UserFrame extends JFrame
 	protected JButton btnListProperties;
 	
 	protected JTable table;
-	
-	protected DefaultListModel listModel;
 	
 	public UserFrame() {
 		this.setSize(700, 500);
@@ -90,20 +87,6 @@ public class UserFrame extends JFrame
 		
 		btnListProperties = new JButton("List Properties");
 		panel.add(btnListProperties);
-		/*
-		listModel = new DefaultListModel();
-		list = new JList(listModel);
-		getContentPane().add(list, BorderLayout.CENTER);
-		*/
-		//list = new JList();
-		//getContentPane().add(list, BorderLayout.CENTER);
-		
-		/*JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane, BorderLayout.CENTER);
-		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(table);*/
 	}
 	
 	public void setSearchListener(ActionListener listener)
@@ -159,6 +142,11 @@ public class UserFrame extends JFrame
 	public void setTableModel(DefaultTableModel tableModel)
 	{
 		table.setModel(tableModel);
+	}
+	
+	public JTable getTable()
+	{
+		return table;
 	}
 	
 }
