@@ -15,10 +15,12 @@ public class RenterFrame extends UserFrame
 		panel.remove(btnCheckSubscription);
 		panel.remove(btnManageProperties);
 		panel.remove(btnPayFees);
+		panel.remove(btnRegisterProperty);
 		panel.remove(btnManageFees);
 		panel.remove(btnPeriodicalReport);
 		panel.remove(btnListUsers);
 		panel.remove(btnListProperties);
+		panel.remove(btnDisplayOwned);
 	}
 	
 	/*class DoubleClickListener implements MouseListener

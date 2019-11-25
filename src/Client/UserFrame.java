@@ -38,6 +38,7 @@ public class UserFrame extends JFrame
 	protected JButton btnManageProperties;
 	protected JButton btnPayFees;
 	protected JButton btnRegisterProperty;
+	protected JButton btnDisplayOwned;
 	protected JButton btnManageFees;
 	protected JButton btnPeriodicalReport;
 	protected JButton btnListUsers;
@@ -80,6 +81,9 @@ public class UserFrame extends JFrame
 		
 		btnPayFees = new JButton("Pay Fees");
 		panel.add(btnPayFees);
+		
+		btnDisplayOwned = new JButton("Display Owned Properties");
+		panel.add(btnDisplayOwned);
 		
 		btnManageFees = new JButton("Manage Fees");
 		panel.add(btnManageFees);
@@ -147,6 +151,11 @@ public class UserFrame extends JFrame
 	public void setListPropertiesListener(ActionListener listener)
 	{
 		btnListProperties.addActionListener(listener);
+	}
+	
+	public void setDisplayOwnedListener(ActionListener listener)
+	{
+		btnDisplayOwned.addActionListener(listener);
 	}
 	
 	public void setTableModel(DefaultTableModel tableModel)

@@ -6,6 +6,7 @@ public class LandlordFrame extends UserFrame
 	{
 		super();
 		
+		panel.remove(btnSearch);
 		panel.remove(btnLogin);
 		panel.remove(btnSubscribe);
 		panel.remove(btnCheckSubscription);

@@ -14,9 +14,11 @@ public class RegisteredRenterFrame extends UserFrame
 		panel.remove(btnLogin);
 		panel.remove(btnManageProperties);
 		panel.remove(btnPayFees);
+		panel.remove(btnRegisterProperty);
 		panel.remove(btnManageFees);
 		panel.remove(btnPeriodicalReport);
 		panel.remove(btnListUsers);
 		panel.remove(btnListProperties);
+		panel.remove(btnDisplayOwned);
 	}
 }

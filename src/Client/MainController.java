@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import Model.Address;
@@ -34,6 +35,7 @@ public class MainController
 		frame.setManagePropertiesListener(new ManagePropertiesListener());
 		frame.setPayFeesListener(new PayFeesListener());
 		frame.setRegisterPropertyListener(new RegisterPropertyListener());
+		frame.setDisplayOwnedListener(new DisplayOwnedListener());
 		frame.setManageFeesListener(new ManageFeesListener());
 		frame.setPeriodicalReportListener(new PeriodicalReportListener());
 		frame.setListUsersListener(new ListUsersListener());
@@ -229,7 +231,7 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
+			/*System.out.println("test");
 			tableModel = new DefaultTableModel();
 			tableModel.addColumn("ID");
 			tableModel.addColumn("# BEDROOMS");
@@ -244,7 +246,7 @@ public class MainController
 			propertyAttributes[3] = "test";
 			propertyAttributes[4] = "test";
 			tableModel.addRow(propertyAttributes);
-			frame.setTableModel(tableModel);
+			frame.setTableModel(tableModel);*/
 		}
 		
 	}
@@ -253,15 +255,16 @@ public class MainController
 	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("test");
+		public void actionPerformed(ActionEvent e)
+		{
+			/*System.out.println("test");
 			String[] propertyAttributes = new String[5];
 			propertyAttributes[0] = "test";
 			propertyAttributes[1] = "test";
 			propertyAttributes[2] = "test";
 			propertyAttributes[3] = "test";
 			propertyAttributes[4] = "test";
-			tableModel.addRow(propertyAttributes);
+			tableModel.addRow(propertyAttributes);*/
 			
 		}
 		
@@ -311,11 +314,18 @@ public class MainController
 	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			System.out.println("test");
 			
+			if(frame.getTable().getSelectedRow() != -1)
+			{
+				Listing theListing = ((Manager)theUser).getPropertyLists();
+				int fee = Integer.parseInt(JOptionPane.showInputDialog("Enter the new fee:"));
+				prms.changeFee(new Fee(fee), theListing.getProperties().get(frame.getTable().getSelectedRow()));
+				
+			}
 		}
-		
 	}
 	
 	class PeriodicalReportListener implements ActionListener
@@ -388,6 +398,35 @@ public class MainController
 			
 			frame.setTableModel(tableModel);
 		}
-		
+	}
+	
+	class DisplayOwnedListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("test");
+			
+			Listing theListing = ((Landlord)theUser).getOwnedPropertyList();
+			
+			tableModel = new DefaultTableModel();
+			tableModel.addColumn("ID");
+			tableModel.addColumn("# BEDROOMS");
+			tableModel.addColumn("# BATHROOMS");
+			tableModel.addColumn("STATE");
+			tableModel.addColumn("FURNISHED");
+			for(int i = 0; i < theListing.getProperties().size(); i++)
+			{
+				String[] propertyAttributes = new String[5];
+				propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
+				propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
+				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
+				propertyAttributes[3] = theListing.getProperties().get(i).getState();
+				propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+				tableModel.addRow(propertyAttributes);
+			}
+			
+			frame.setTableModel(tableModel);
+		}
 	}
 }
