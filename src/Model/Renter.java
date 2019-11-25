@@ -1,23 +1,28 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Renter extends User {
 	
 	private Listing newPropertyList;
 	private boolean subscribed;
 	private int lastSeenID;
+	private Criteria userCriteria;
 	
-	public Renter(String firstName, String lastName, int id, boolean subscribed, int lastSeenID, Listing newPropertyList)
+	public Renter(String firstName, String lastName, int id, boolean subscribed, int lastSeenID, Criteria userCriteria, Listing newPropertyList)
 	{
 		super(firstName, lastName, id);
+		this.userCriteria = userCriteria;
 		this.setSubscribed(subscribed);
 		this.newPropertyList = newPropertyList;
 		this.setLastSeenID(lastSeenID);
 		this.type = "renter";
 	}
 	
-	public Renter(String firstName, String lastName, int id, boolean subscribed, int lastSeenID)
+	public Renter(String firstName, String lastName, int id, boolean subscribed, int lastSeenID, Criteria userCriteria)
 	{
 		super(firstName, lastName, id);
+		this.userCriteria = userCriteria;
 		this.setSubscribed(subscribed);
 		this.setLastSeenID(lastSeenID);
 		this.newPropertyList = new Listing();
@@ -47,4 +52,26 @@ public class Renter extends User {
 	public void setLastSeenID(int lastSeenID) {
 		this.lastSeenID = lastSeenID;
 	}
+	
+	public Listing filterList()
+	{
+		Listing filteredList = new Listing(new ArrayList<Property>());
+		for (Property p : newPropertyList.getProperties())
+		{
+			if(userCriteria.fitsInCriteria(p))
+			{
+				filteredList.addProperty(p);
+			}
+		}
+		return filteredList;
+	}
+
+	public Criteria getUserCriteria() {
+		return userCriteria;
+	}
+
+	public void setUserCriteria(Criteria userCriteria) {
+		this.userCriteria = userCriteria;
+	}
+	
 }
