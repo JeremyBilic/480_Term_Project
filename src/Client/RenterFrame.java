@@ -21,7 +21,7 @@ public class RenterFrame extends UserFrame
 		panel.remove(btnListProperties);
 	}
 	
-	class DoubleClickListener implements MouseListener
+	/*class DoubleClickListener implements MouseListener
 	{
 
 		@Override
@@ -49,6 +49,6 @@ public class RenterFrame extends UserFrame
 		@Override
 		public void mouseExited(MouseEvent e) {}
 		
-	}
+	}*/
 	
 }

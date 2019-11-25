@@ -2,12 +2,15 @@ package Client;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
 
 import Model.Address;
 import Model.Criteria;
 import Model.Listing;
+import Model.Manager;
+import Model.Renter;
 import Model.User;
 
 public class MainController
@@ -147,6 +150,41 @@ public class MainController
 		public void actionPerformed(ActionEvent e)
 		{
 			System.out.println("test");
+			PropertyInputBox theDialog = new PropertyInputBox();
+			theDialog.setFrameListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent evt)
+				{
+					String action = evt.getActionCommand();
+					if(action.equals("OK"))
+					{
+						Address theAddress = new Address(theDialog.getStreet(), theDialog.getQuadrant(), 
+								theDialog.getCity(), theDialog.getProvince(), theDialog.getCountry());
+						
+						String furnished;
+						
+						if(theDialog.getFurnished().equals("Yes"))
+						{
+							furnished = "TRUE";
+						}
+						else if(theDialog.getFurnished().equals("No"))
+						{
+							furnished = "FALSE";
+						}
+						else
+						{
+							furnished = "";
+						}
+						
+						Criteria theCriteria = new Criteria(theAddress, theDialog.getState(), theDialog.getNumBathrooms(), 
+								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
+						((Renter)theUser).setUserCriteria(theCriteria);
+						((Renter)theUser).setSubscribed(true);
+						prms.toggleSubscription((Renter)theUser);
+					}
+				}
+			});
+			theDialog.setVisible(true);
 		}
 	}
 	
@@ -155,8 +193,29 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
+			if(((Renter)theUser).isSubscribed());
+			{
+				Listing theListing = ((Renter)theUser).filterList();
+				
+				tableModel = new DefaultTableModel();
+				tableModel.addColumn("ID");
+				tableModel.addColumn("# BEDROOMS");
+				tableModel.addColumn("# BATHROOMS");
+				tableModel.addColumn("STATE");
+				tableModel.addColumn("FURNISHED");
+				for(int i = 0; i < theListing.getProperties().size(); i++)
+				{
+					String[] propertyAttributes = new String[5];
+					propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
+					propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
+					propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
+					propertyAttributes[3] = theListing.getProperties().get(i).getState();
+					propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+					tableModel.addRow(propertyAttributes);
+				}
+				
+				frame.setTableModel(tableModel);
+			}
 		}
 		
 	}
@@ -235,6 +294,24 @@ public class MainController
 		{
 			System.out.println("test");
 			
+			ArrayList<User> theListing = ((Manager)theUser).getUserList();
+			
+			tableModel = new DefaultTableModel();
+			tableModel.addColumn("FIRST NAME");
+			tableModel.addColumn("LAST NAME");
+			tableModel.addColumn("ID");
+			tableModel.addColumn("TYPE");
+			for(int i = 0; i < theListing.size(); i++)
+			{
+				String[] propertyAttributes = new String[5];
+				propertyAttributes[0] = theListing.get(i).getFirstName();
+				propertyAttributes[1] = theListing.get(i).getLastName();
+				propertyAttributes[2] = String.valueOf(theListing.get(i).getId());
+				propertyAttributes[3] = theListing.get(i).getType();
+				tableModel.addRow(propertyAttributes);
+			}
+			
+			frame.setTableModel(tableModel);
 		}
 		
 	}
@@ -246,6 +323,26 @@ public class MainController
 		{
 			System.out.println("test");
 			
+			Listing theListing = ((Manager)theUser).getPropertyLists();
+			
+			tableModel = new DefaultTableModel();
+			tableModel.addColumn("ID");
+			tableModel.addColumn("# BEDROOMS");
+			tableModel.addColumn("# BATHROOMS");
+			tableModel.addColumn("STATE");
+			tableModel.addColumn("FURNISHED");
+			for(int i = 0; i < theListing.getProperties().size(); i++)
+			{
+				String[] propertyAttributes = new String[5];
+				propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
+				propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
+				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
+				propertyAttributes[3] = theListing.getProperties().get(i).getState();
+				propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+				tableModel.addRow(propertyAttributes);
+			}
+			
+			frame.setTableModel(tableModel);
 		}
 		
 	}

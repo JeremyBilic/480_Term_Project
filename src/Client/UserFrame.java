@@ -53,6 +53,7 @@ public class UserFrame extends JFrame
 		
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setDefaultEditor(Object.class, null);
 		scrollPane.setViewportView(table);
 		
 		panel = new JPanel();
