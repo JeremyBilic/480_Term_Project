@@ -5,7 +5,10 @@ import java.awt.FlowLayout;
 import java.awt.Point;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 import Model.Address;
 import Model.Criteria;
@@ -21,6 +24,7 @@ import java.awt.event.ActionEvent;
 public class UserFrame extends JFrame
 {
 	protected JPanel panel;
+	protected JPanel panelCenter;
 	
 	protected JButton btnSearch;
 	protected JButton btnLogin;
@@ -33,11 +37,21 @@ public class UserFrame extends JFrame
 	protected JButton btnListUsers;
 	protected JButton btnListProperties;
 	
-	protected JList list;
+	protected JTable table;
+	//private DefaultTableModel tableModel;
 	
 	public UserFrame() {
 		this.setSize(700, 500);
 		getContentPane().setLayout(new BorderLayout(0, 0));
+		
+		//panelCenter = new JPanel();
+		//getContentPane().add(comp)
+		JScrollPane scrollPane = new JScrollPane();
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		
+		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(table);
 		
 		panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.SOUTH);
@@ -72,8 +86,15 @@ public class UserFrame extends JFrame
 		btnListProperties = new JButton("List Properties");
 		panel.add(btnListProperties);
 		
-		list = new JList();
-		getContentPane().add(list, BorderLayout.CENTER);
+		//list = new JList();
+		//getContentPane().add(list, BorderLayout.CENTER);
+		
+		/*JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane, BorderLayout.CENTER);
+		
+		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(table);*/
 	}
 	
 	public void setSearchListener(ActionListener listener)
@@ -124,6 +145,11 @@ public class UserFrame extends JFrame
 	public void setListPropertiesListener(ActionListener listener)
 	{
 		btnListProperties.addActionListener(listener);
+	}
+	
+	public void setTableModel(DefaultTableModel tableModel)
+	{
+		table.setModel(tableModel);
 	}
 	
 }

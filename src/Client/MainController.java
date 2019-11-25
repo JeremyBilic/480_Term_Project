@@ -3,6 +3,8 @@ package Client;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.table.DefaultTableModel;
+
 import Model.Address;
 import Model.Criteria;
 import Model.Listing;
@@ -13,6 +15,7 @@ public class MainController
 	private UserFrame frame;
 	private PRMSystem prms;
 	private User theUser;
+	private DefaultTableModel tableModel;
 	
 	public MainController(UserFrame theFrame)
 	{
@@ -70,6 +73,25 @@ public class MainController
 								theDialog.getNumBedrooms(), theDialog.getPropertyType(), furnished);
 						
 						Listing theListing = prms.search(theCriteria);
+						
+						tableModel = new DefaultTableModel();
+						tableModel.addColumn("ID");
+						tableModel.addColumn("# BEDROOMS");
+						tableModel.addColumn("# BATHROOMS");
+						tableModel.addColumn("STATE");
+						tableModel.addColumn("FURNISHED");
+						for(int i = 0; i < theListing.getProperties().size(); i++)
+						{
+							String[] propertyAttributes = new String[5];
+							propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
+							propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
+							propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
+							propertyAttributes[3] = theListing.getProperties().get(i).getState();
+							propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+							tableModel.addRow(propertyAttributes);
+						}
+						
+						frame.setTableModel(tableModel);
 					}
 				}
 			});
@@ -121,7 +143,15 @@ public class MainController
 	
 	class SubscribeListener implements ActionListener
 	{
-
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("test");
+		}
+	}
+	
+	class CheckSubscriptionListener implements ActionListener
+	{
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
@@ -131,22 +161,11 @@ public class MainController
 		
 	}
 	
-	class CheckSubscriptionListener implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("test");
-			
-		}
-		
-	}
-	
 	class ManagePropertiesListener implements ActionListener
 	{
-
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			System.out.println("test");
 			
 		}
@@ -177,9 +196,9 @@ public class MainController
 	
 	class PeriodicalReportListener implements ActionListener
 	{
-
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			System.out.println("test");
 			
 		}
@@ -188,9 +207,9 @@ public class MainController
 	
 	class ListUsersListener implements ActionListener
 	{
-
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			System.out.println("test");
 			
 		}
@@ -199,9 +218,9 @@ public class MainController
 	
 	class ListPropertiesListener implements ActionListener
 	{
-
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e)
+		{
 			System.out.println("test");
 			
 		}
