@@ -43,6 +43,7 @@ public class UserFrame extends JFrame
 		panel.add(btnSearch);
 		btnSearch.addActionListener(new SearchButtonListener());
 		
+		listModel = new DefaultListModel();
 		list = new JList(listModel);
 		getContentPane().add(list, BorderLayout.CENTER);
 	}
