@@ -8,8 +8,11 @@ import javax.swing.table.DefaultTableModel;
 
 import Model.Address;
 import Model.Criteria;
+import Model.Fee;
+import Model.Landlord;
 import Model.Listing;
 import Model.Manager;
+import Model.Property;
 import Model.Renter;
 import Model.User;
 
@@ -30,6 +33,7 @@ public class MainController
 		frame.setCheckSubscriptionListener(new CheckSubscriptionListener());
 		frame.setManagePropertiesListener(new ManagePropertiesListener());
 		frame.setPayFeesListener(new PayFeesListener());
+		frame.setRegisterPropertyListener(new RegisterPropertyListener());
 		frame.setManageFeesListener(new ManageFeesListener());
 		frame.setPeriodicalReportListener(new PeriodicalReportListener());
 		frame.setListUsersListener(new ListUsersListener());
@@ -261,6 +265,46 @@ public class MainController
 			
 		}
 		
+	}
+	
+	class RegisterPropertyListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("test");
+			PropertyInputBox theDialog = new PropertyInputBox();
+			theDialog.setFrameListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent evt)
+				{
+					String action = evt.getActionCommand();
+					if(action.equals("OK"))
+					{
+						Address theAddress = new Address(theDialog.getStreet(), theDialog.getQuadrant(), 
+								theDialog.getCity(), theDialog.getProvince(), theDialog.getCountry());
+						
+						boolean furnished;
+						
+						if(theDialog.getFurnished().equals("Yes"))
+						{
+							furnished = true;
+						}
+						else
+						{
+							furnished = false;
+						}
+						
+						Property theProperty = new Property(theAddress, (Landlord)theUser, 0, 
+								theDialog.getState(), Integer.parseInt(theDialog.getNumBathrooms()), 
+								Integer.parseInt(theDialog.getNumBedrooms()), theDialog.getPropertyType(), furnished, new Fee(100));
+						
+						prms.addProperty(theProperty);
+					}
+				}
+			});
+			theDialog.setVisible(true);
+		}
 	}
 	
 	class ManageFeesListener implements ActionListener
