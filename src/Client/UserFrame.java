@@ -35,7 +35,7 @@ public class UserFrame extends JFrame
 	protected JButton btnLogin;
 	protected JButton btnSubscribe;
 	protected JButton btnCheckSubscription;
-	protected JButton btnManageProperties;
+	protected JButton btnManageProperty;
 	protected JButton btnPayFees;
 	protected JButton btnRegisterProperty;
 	protected JButton btnDisplayOwned;
@@ -43,6 +43,7 @@ public class UserFrame extends JFrame
 	protected JButton btnPeriodicalReport;
 	protected JButton btnListUsers;
 	protected JButton btnListProperties;
+	protected JButton btnEmail;
 	
 	protected JTable table;
 	
@@ -64,6 +65,9 @@ public class UserFrame extends JFrame
 		btnSearch = new JButton("Search");
 		panel.add(btnSearch);
 		
+		btnEmail = new JButton("Send Email");
+		panel.add(btnEmail);
+		
 		btnLogin = new JButton("Login");
 		panel.add(btnLogin);
 		
@@ -73,8 +77,8 @@ public class UserFrame extends JFrame
 		btnCheckSubscription = new JButton("Check Subscription");
 		panel.add(btnCheckSubscription);
 		
-		btnManageProperties = new JButton("Manage Properties");
-		panel.add(btnManageProperties);
+		btnManageProperty = new JButton("Manage Property");
+		panel.add(btnManageProperty);
 		
 		btnRegisterProperty = new JButton("Register Property");
 		panel.add(btnRegisterProperty);
@@ -118,9 +122,9 @@ public class UserFrame extends JFrame
 		btnCheckSubscription.addActionListener(listener);
 	}
 	
-	public void setManagePropertiesListener(ActionListener listener)
+	public void setManagePropertyListener(ActionListener listener)
 	{
-		btnManageProperties.addActionListener(listener);
+		btnManageProperty.addActionListener(listener);
 	}
 	
 	public void setPayFeesListener(ActionListener listener)
@@ -156,6 +160,11 @@ public class UserFrame extends JFrame
 	public void setDisplayOwnedListener(ActionListener listener)
 	{
 		btnDisplayOwned.addActionListener(listener);
+	}
+	
+	public void setEmailListener(ActionListener listener)
+	{
+		btnEmail.addActionListener(listener);
 	}
 	
 	public void setTableModel(DefaultTableModel tableModel)

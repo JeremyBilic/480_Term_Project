@@ -11,9 +11,9 @@ public class ManagerFrame extends UserFrame
 		panel.remove(btnSubscribe);
 		panel.remove(btnCheckSubscription);
 		panel.remove(btnRegisterProperty);
-		panel.remove(btnManageProperties);
 		panel.remove(btnPayFees);
 		panel.remove(btnDisplayOwned);
+		panel.remove(btnEmail);
 	}
 	
 }

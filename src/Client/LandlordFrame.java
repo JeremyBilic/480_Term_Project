@@ -14,6 +14,7 @@ public class LandlordFrame extends UserFrame
 		panel.remove(btnPeriodicalReport);
 		panel.remove(btnListUsers);
 		panel.remove(btnListProperties);
+		panel.remove(btnEmail);
 		
 	}
 }

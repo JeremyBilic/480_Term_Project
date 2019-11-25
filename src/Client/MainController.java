@@ -32,7 +32,7 @@ public class MainController
 		frame.setLoginListener(new LoginListener());
 		frame.setSubscribeListener(new SubscribeListener());
 		frame.setCheckSubscriptionListener(new CheckSubscriptionListener());
-		frame.setManagePropertiesListener(new ManagePropertiesListener());
+		frame.setManagePropertyListener(new ManagePropertyListener());
 		frame.setPayFeesListener(new PayFeesListener());
 		frame.setRegisterPropertyListener(new RegisterPropertyListener());
 		frame.setDisplayOwnedListener(new DisplayOwnedListener());
@@ -40,6 +40,7 @@ public class MainController
 		frame.setPeriodicalReportListener(new PeriodicalReportListener());
 		frame.setListUsersListener(new ListUsersListener());
 		frame.setListPropertiesListener(new ListPropertiesListener());
+		frame.setEmailListener(new EmailListener());
 	}
 	
 	public void setSystem(PRMSystem prms) {
@@ -51,7 +52,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
 			PropertyInputBox theDialog = new PropertyInputBox();
 			theDialog.setFrameListener(new ActionListener()
 			{
@@ -113,7 +113,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
 			LoginBox theDialog = new LoginBox();
 			theDialog.setFrameListener(new ActionListener()
 			{
@@ -155,7 +154,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
 			PropertyInputBox theDialog = new PropertyInputBox();
 			theDialog.setFrameListener(new ActionListener()
 			{
@@ -209,6 +207,12 @@ public class MainController
 				tableModel.addColumn("# BATHROOMS");
 				tableModel.addColumn("STATE");
 				tableModel.addColumn("FURNISHED");
+				tableModel.addColumn("STREET");
+				tableModel.addColumn("QUADRANT");
+				tableModel.addColumn("CITY");
+				tableModel.addColumn("PROVINCE");
+				tableModel.addColumn("COUNTRY");
+				
 				for(int i = 0; i < theListing.getProperties().size(); i++)
 				{
 					String[] propertyAttributes = new String[5];
@@ -217,6 +221,11 @@ public class MainController
 					propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
 					propertyAttributes[3] = theListing.getProperties().get(i).getState();
 					propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+					propertyAttributes[5] = theListing.getProperties().get(i).getAddress().getStreet();
+					propertyAttributes[6] = theListing.getProperties().get(i).getAddress().getQuadrant();
+					propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
+					propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
+					propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
 					tableModel.addRow(propertyAttributes);
 				}
 				
@@ -226,7 +235,7 @@ public class MainController
 		
 	}
 	
-	class ManagePropertiesListener implements ActionListener
+	class ManagePropertyListener implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e)
@@ -275,7 +284,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
 			PropertyInputBox theDialog = new PropertyInputBox();
 			theDialog.setFrameListener(new ActionListener()
 			{
@@ -316,8 +324,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
 			if(frame.getTable().getSelectedRow() != -1)
 			{
 				Listing theListing = ((Manager)theUser).getPropertyLists();
@@ -333,8 +339,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
 			PeriodicalReportFrame theReportFrame = new PeriodicalReportFrame(prms.requestPeriodical());
 			theReportFrame.setVisible(true);
 		}
@@ -346,8 +350,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
 			ArrayList<User> theListing = ((Manager)theUser).getUserList();
 			
 			tableModel = new DefaultTableModel();
@@ -375,8 +377,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
 			Listing theListing = ((Manager)theUser).getPropertyLists();
 			
 			tableModel = new DefaultTableModel();
@@ -385,6 +385,11 @@ public class MainController
 			tableModel.addColumn("# BATHROOMS");
 			tableModel.addColumn("STATE");
 			tableModel.addColumn("FURNISHED");
+			tableModel.addColumn("STREET");
+			tableModel.addColumn("QUADRANT");
+			tableModel.addColumn("CITY");
+			tableModel.addColumn("PROVINCE");
+			tableModel.addColumn("COUNTRY");
 			for(int i = 0; i < theListing.getProperties().size(); i++)
 			{
 				String[] propertyAttributes = new String[5];
@@ -393,6 +398,11 @@ public class MainController
 				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
 				propertyAttributes[3] = theListing.getProperties().get(i).getState();
 				propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+				propertyAttributes[5] = theListing.getProperties().get(i).getAddress().getStreet();
+				propertyAttributes[6] = theListing.getProperties().get(i).getAddress().getQuadrant();
+				propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
+				propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
+				propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
 				tableModel.addRow(propertyAttributes);
 			}
 			
@@ -405,8 +415,6 @@ public class MainController
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			System.out.println("test");
-			
 			Listing theListing = ((Landlord)theUser).getOwnedPropertyList();
 			
 			tableModel = new DefaultTableModel();
@@ -415,6 +423,11 @@ public class MainController
 			tableModel.addColumn("# BATHROOMS");
 			tableModel.addColumn("STATE");
 			tableModel.addColumn("FURNISHED");
+			tableModel.addColumn("STREET");
+			tableModel.addColumn("QUADRANT");
+			tableModel.addColumn("CITY");
+			tableModel.addColumn("PROVINCE");
+			tableModel.addColumn("COUNTRY");
 			for(int i = 0; i < theListing.getProperties().size(); i++)
 			{
 				String[] propertyAttributes = new String[5];
@@ -423,10 +436,27 @@ public class MainController
 				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
 				propertyAttributes[3] = theListing.getProperties().get(i).getState();
 				propertyAttributes[4] = String.valueOf(theListing.getProperties().get(i).isFurnished());
+				propertyAttributes[5] = theListing.getProperties().get(i).getAddress().getStreet();
+				propertyAttributes[6] = theListing.getProperties().get(i).getAddress().getQuadrant();
+				propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
+				propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
+				propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
 				tableModel.addRow(propertyAttributes);
 			}
-			
 			frame.setTableModel(tableModel);
+		}
+	}
+	
+	class EmailListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			if(frame.getTable().getSelectedRow() != -1)
+			{
+				EmailFrame theDialog = new EmailFrame();
+				theDialog.setVisible(true);
+			}
 		}
 	}
 }

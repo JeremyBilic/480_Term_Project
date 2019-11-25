@@ -13,7 +13,7 @@ public class RenterFrame extends UserFrame
 		
 		panel.remove(btnSubscribe);
 		panel.remove(btnCheckSubscription);
-		panel.remove(btnManageProperties);
+		panel.remove(btnManageProperty);
 		panel.remove(btnPayFees);
 		panel.remove(btnRegisterProperty);
 		panel.remove(btnManageFees);
