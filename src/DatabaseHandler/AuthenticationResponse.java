@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import Model.Address;
+import Model.Criteria;
 import Model.Landlord;
 import Model.Listing;
 import Model.Manager;
@@ -29,7 +30,34 @@ public class AuthenticationResponse implements Response{
 					boolean subscribed = result.getBoolean("subscribed");
 					int lastSeen = result.getInt("lastid");
 					user.setType("renter");
-					user = new Renter(fname, lname, uid, subscribed, lastSeen);
+					
+					int pid = result.getInt("pid");
+					String state = result.getString("state");
+					int numberOfBathrooms = result.getInt("bathrooms");
+					int numberOfBedrooms = result.getInt("bedrooms");
+					String type = result.getString("type");
+					boolean furnished = result.getBoolean("furnished");
+					double fee = result.getDouble("fee");
+
+					String street = result.getString("street");
+					String quadrant = result.getString("quadrant");
+					String city = result.getString("city");
+					String province = result.getString("province");
+					String country = result.getString("country");
+					
+					user = new Renter(fname, lname, uid, subscribed, lastSeen, 
+							new Criteria(new Address(
+									street,
+									quadrant,
+									city,
+									province,
+									country),
+							state, 
+							Integer.toString(numberOfBathrooms),
+							Integer.toString(numberOfBedrooms),
+							type,
+							Boolean.toString(furnished).toLowerCase()));
+					
 				} else if (utype == 1) {
 					String email = result.getString("email");
 					user.setType("landlord");

@@ -7,13 +7,19 @@ import java.awt.Point;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListModel;
+
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import DatabaseHandler.SearchCriteriaRequest;
+import DatabaseHandler.SearchCriteriaResponse;
 import Model.Address;
 import Model.Criteria;
+import Model.Property;
 
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -38,6 +44,8 @@ public class UserFrame extends JFrame
 	protected JButton btnListProperties;
 	
 	protected JTable table;
+	
+	protected DefaultListModel listModel;
 	
 	public UserFrame() {
 		this.setSize(700, 500);
@@ -82,7 +90,11 @@ public class UserFrame extends JFrame
 		
 		btnListProperties = new JButton("List Properties");
 		panel.add(btnListProperties);
-		
+		/*
+		listModel = new DefaultListModel();
+		list = new JList(listModel);
+		getContentPane().add(list, BorderLayout.CENTER);
+		*/
 		//list = new JList();
 		//getContentPane().add(list, BorderLayout.CENTER);
 		

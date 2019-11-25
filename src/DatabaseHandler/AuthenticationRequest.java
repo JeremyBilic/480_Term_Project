@@ -16,10 +16,11 @@ public class AuthenticationRequest extends Request{
 	@Override
 	public void request() {
 		String query = "SELECT *"
-				+ "FROM authentication, user "
-				+ "WHERE authentication.username = \"" + username
-				+ "\" AND authentication.password = \"" + password
-				+ "\" AND authentication.uid = user.uid";
+				+ "FROM authentication AS a, user AS u, criteria AS c"
+				+ "WHERE c.username = \"" + username
+				+ "\" AND c.password = \"" + password
+				+ "\" AND c.uid = u.uid"
+				+ "\" AND u.uid = c.uid";
 		
 		int status = RequestHandler.getInstance().queryDatabase(query, response);
 		
