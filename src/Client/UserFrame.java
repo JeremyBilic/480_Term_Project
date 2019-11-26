@@ -35,7 +35,8 @@ public class UserFrame extends JFrame
 	protected JButton btnLogin;
 	protected JButton btnSubscribe;
 	protected JButton btnCheckSubscription;
-	protected JButton btnManageProperty;
+	protected JButton btnManagerManageProperty;
+	protected JButton btnLandlordManageProperty;
 	protected JButton btnPayFees;
 	protected JButton btnRegisterProperty;
 	protected JButton btnDisplayOwned;
@@ -77,8 +78,11 @@ public class UserFrame extends JFrame
 		btnCheckSubscription = new JButton("Check Subscription");
 		panel.add(btnCheckSubscription);
 		
-		btnManageProperty = new JButton("Manage Property");
-		panel.add(btnManageProperty);
+		btnManagerManageProperty = new JButton("Manage Property");
+		panel.add(btnManagerManageProperty);
+		
+		btnLandlordManageProperty = new JButton("Manage Property");
+		panel.add(btnLandlordManageProperty);
 		
 		btnRegisterProperty = new JButton("Register Property");
 		panel.add(btnRegisterProperty);
@@ -122,9 +126,14 @@ public class UserFrame extends JFrame
 		btnCheckSubscription.addActionListener(listener);
 	}
 	
-	public void setManagePropertyListener(ActionListener listener)
+	public void setManagerManagePropertyListener(ActionListener listener)
 	{
-		btnManageProperty.addActionListener(listener);
+		btnManagerManageProperty.addActionListener(listener);
+	}
+	
+	public void setLandlordManagePropertyListener(ActionListener listener)
+	{
+		btnLandlordManageProperty.addActionListener(listener);
 	}
 	
 	public void setPayFeesListener(ActionListener listener)

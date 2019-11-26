@@ -14,6 +14,7 @@ public class ManagerFrame extends UserFrame
 		panel.remove(btnPayFees);
 		panel.remove(btnDisplayOwned);
 		panel.remove(btnEmail);
+		panel.remove(btnLandlordManageProperty);
 	}
 	
 }

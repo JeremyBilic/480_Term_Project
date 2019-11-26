@@ -32,7 +32,8 @@ public class MainController
 		frame.setLoginListener(new LoginListener());
 		frame.setSubscribeListener(new SubscribeListener());
 		frame.setCheckSubscriptionListener(new CheckSubscriptionListener());
-		frame.setManagePropertyListener(new ManagePropertyListener());
+		frame.setManagerManagePropertyListener(new ManagerManagePropertyListener());
+		frame.setLandlordManagePropertyListener(new LandlordManagePropertyListener());
 		frame.setPayFeesListener(new PayFeesListener());
 		frame.setRegisterPropertyListener(new RegisterPropertyListener());
 		frame.setDisplayOwnedListener(new DisplayOwnedListener());
@@ -235,11 +236,18 @@ public class MainController
 		
 	}
 	
-	class ManagePropertyListener implements ActionListener
+	class ManagerManagePropertyListener implements ActionListener
 	{
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
+			if(frame.getTable().getSelectedRow() != -1)
+			{
+				Listing theListing = ((Manager)theUser).getPropertyLists();
+				String state = JOptionPane.showInputDialog("Enter the new state:");
+				theListing.getProperties().get(frame.getTable().getSelectedRow()).setState(state);
+				prms.updateProperty(theListing.getProperties().get(frame.getTable().getSelectedRow()));
+			}
 			/*System.out.println("test");
 			tableModel = new DefaultTableModel();
 			tableModel.addColumn("ID");
@@ -258,6 +266,21 @@ public class MainController
 			frame.setTableModel(tableModel);*/
 		}
 		
+	}
+	
+	class LandlordManagePropertyListener implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			if(frame.getTable().getSelectedRow() != -1)
+			{
+				Listing theListing = ((Landlord)theUser).getOwnedPropertyList();
+				String state = JOptionPane.showInputDialog("Enter the new state:");
+				theListing.getProperties().get(frame.getTable().getSelectedRow()).setState(state);
+				prms.updateProperty(theListing.getProperties().get(frame.getTable().getSelectedRow()));
+			}
+		}
 	}
 	
 	class PayFeesListener implements ActionListener

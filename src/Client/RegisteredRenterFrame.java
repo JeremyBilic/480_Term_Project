@@ -12,7 +12,8 @@ public class RegisteredRenterFrame extends UserFrame
 		super();
 		
 		panel.remove(btnLogin);
-		panel.remove(btnManageProperty);
+		panel.remove(btnManagerManageProperty);
+		panel.remove(btnLandlordManageProperty);
 		panel.remove(btnPayFees);
 		panel.remove(btnRegisterProperty);
 		panel.remove(btnManageFees);
