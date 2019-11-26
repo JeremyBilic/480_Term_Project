@@ -1,30 +1,14 @@
 package Client;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import java.awt.FlowLayout;
-import java.awt.Point;
-
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListModel;
-
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
-import DatabaseHandler.SearchCriteriaRequest;
-import DatabaseHandler.SearchCriteriaResponse;
-import Model.Address;
-import Model.Criteria;
-import Model.Property;
-
-import javax.swing.JList;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.ActionEvent;
 
 
 public class UserFrame extends JFrame

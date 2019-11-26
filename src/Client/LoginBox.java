@@ -19,13 +19,11 @@ public class LoginBox extends JDialog implements ActionListener
 	
 	public LoginBox() {
 		this.setSize(500, 200);
+		setTitle("Log In");
 		getContentPane().setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
-		
-		JLabel lblLogIn = new JLabel("Log In");
-		panel.add(lblLogIn);
 		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1, BorderLayout.SOUTH);

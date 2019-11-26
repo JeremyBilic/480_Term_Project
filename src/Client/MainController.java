@@ -248,22 +248,6 @@ public class MainController
 				theListing.getProperties().get(frame.getTable().getSelectedRow()).setState(state);
 				prms.updateProperty(theListing.getProperties().get(frame.getTable().getSelectedRow()));
 			}
-			/*System.out.println("test");
-			tableModel = new DefaultTableModel();
-			tableModel.addColumn("ID");
-			tableModel.addColumn("# BEDROOMS");
-			tableModel.addColumn("# BATHROOMS");
-			tableModel.addColumn("STATE");
-			tableModel.addColumn("FURNISHED");
-			
-			String[] propertyAttributes = new String[5];
-			propertyAttributes[0] = "test";
-			propertyAttributes[1] = "test";
-			propertyAttributes[2] = "test";
-			propertyAttributes[3] = "test";
-			propertyAttributes[4] = "test";
-			tableModel.addRow(propertyAttributes);
-			frame.setTableModel(tableModel);*/
 		}
 		
 	}
@@ -285,19 +269,9 @@ public class MainController
 	
 	class PayFeesListener implements ActionListener
 	{
-
 		@Override
 		public void actionPerformed(ActionEvent e)
-		{
-			/*System.out.println("test");
-			String[] propertyAttributes = new String[5];
-			propertyAttributes[0] = "test";
-			propertyAttributes[1] = "test";
-			propertyAttributes[2] = "test";
-			propertyAttributes[3] = "test";
-			propertyAttributes[4] = "test";
-			tableModel.addRow(propertyAttributes);*/
-			
+		{		
 		}
 		
 	}
