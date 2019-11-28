@@ -13,7 +13,7 @@ public class ManagerProfileRequest extends Request {
 	@Override
 	public void request() {
 		String query = "SELECT *"
-				+ "FROM property, user";
+				+ "FROM property NATURAL JOIN user";
 		
 		RequestHandler.getInstance().queryDatabase(query, response);
 		

@@ -15,8 +15,8 @@ public class SearchCriteriaRequest extends Request{
 	public void request() {
 		
 		String query = "SELECT *"
-				+ "FROM user, property"
-				+ "WHERE user.uid = property.uid ";
+				+ "FROM user NATURAL JOIN property"
+				+ "WHERE true";
 		
 		if (!criteria.getState().isEmpty()) {
 			query += (" AND state = \"" + criteria.getState()) + "\"";

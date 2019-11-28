@@ -12,7 +12,7 @@ public class RenterProfileRequest extends Request{
 	@Override
 	public void request() {
 		String query = "SELECT *"
-				+ "FROM property, user"
+				+ "FROM property NATURAL JOIN user"
 				+ "WHERE lastid > " + user.getLastSeenID();
 		RequestHandler.getInstance().queryDatabase(query, response);
 	}

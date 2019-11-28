@@ -25,25 +25,22 @@ public class AuthenticationResponse implements Response{
 				int utype = result.getInt("utype");
 				int uid = result.getInt("uid");
 
-				
 				if (utype == 0) {
 					boolean subscribed = result.getBoolean("subscribed");
 					int lastSeen = result.getInt("lastid");
-					user.setType("renter");
+					//user.setType("renter");
 					
-					int pid = result.getInt("pid");
-					String state = result.getString("state");
-					int numberOfBathrooms = result.getInt("bathrooms");
-					int numberOfBedrooms = result.getInt("bedrooms");
-					String type = result.getString("type");
-					boolean furnished = result.getBoolean("furnished");
-					double fee = result.getDouble("fee");
+					String state = result.getString("cstate");
+					String numberOfBathrooms = result.getString("cbathrooms");
+					String numberOfBedrooms = result.getString("cbedrooms");
+					String type = result.getString("ctype");
+					String furnished = result.getString("cfurnished");
 
-					String street = result.getString("street");
-					String quadrant = result.getString("quadrant");
-					String city = result.getString("city");
-					String province = result.getString("province");
-					String country = result.getString("country");
+					String street = result.getString("cstreet");
+					String quadrant = result.getString("cquadrant");
+					String city = result.getString("ccity");
+					String province = result.getString("cprovince");
+					String country = result.getString("ccountry");
 					
 					user = new Renter(fname, lname, uid, subscribed, lastSeen, 
 							new Criteria(new Address(
@@ -53,17 +50,17 @@ public class AuthenticationResponse implements Response{
 									province,
 									country),
 							state, 
-							Integer.toString(numberOfBathrooms),
-							Integer.toString(numberOfBedrooms),
+							numberOfBathrooms,
+							numberOfBedrooms,
 							type,
-							Boolean.toString(furnished).toLowerCase()));
+							furnished.toLowerCase()));
 					
 				} else if (utype == 1) {
 					String email = result.getString("email");
-					user.setType("landlord");
+					//user.setType("landlord");
 					user = new Landlord(fname, lname, uid, email);
 				} else {
-					user.setType("manager");
+					//user.setType("manager");
 					user = new Manager(fname, lname, uid);
 				}
 				

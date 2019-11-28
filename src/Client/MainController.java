@@ -130,14 +130,17 @@ public class MainController
 							
 							if(theUser.getType().equals("renter"))
 							{
+								prms.getRenterProfile((Renter)theUser);
 								frame = new RegisteredRenterFrame();
 							}
 							else if(theUser.getType().equals("landlord"))
 							{
+								prms.getLandlordProfile((Landlord)theUser);
 								frame = new LandlordFrame();
 							}
 							else
 							{
+								prms.getManagerProfile((Manager)theUser);
 								frame = new ManagerFrame();
 							}
 							

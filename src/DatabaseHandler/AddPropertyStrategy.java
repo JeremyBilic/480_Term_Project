@@ -6,7 +6,7 @@ public class AddPropertyStrategy implements ManagementStrategy{
 
 	@Override
 	public String createQuery(Property property) {
-		String query = "INSERT INTO property (state, bathrooms, type, furnished, street, quadrant, province, country, uid, city) "
+		String query = "INSERT INTO property (state, bathrooms, type, furnished, street, quadrant, province, country, uid, city, fee) "
 					+ "VALUES (\"" + property.getState()
 					+ "\", " + property.getNumberOfBathrooms()
 					+ ", " + property.getNumberOfBedrooms()
@@ -17,7 +17,8 @@ public class AddPropertyStrategy implements ManagementStrategy{
 					+ "\", \"" + property.getAddress().getProvince()
 					+ "\", \""+ property.getAddress().getCountry()
 					+ ", "+ property.getOwner().getId()
-					+ ", \"" + property.getAddress().getCity() + "\");";
+					+ ", \"" + property.getAddress().getCity() 
+					+ "\", " + property.getFee().getAmount() + ");";
 		
 		return query;
 	}
