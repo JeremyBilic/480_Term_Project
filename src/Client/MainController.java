@@ -27,21 +27,7 @@ public class MainController
 	public MainController(UserFrame theFrame)
 	{
 		frame = theFrame;
-		
-		frame.setSearchListener(new SearchListener());
-		frame.setLoginListener(new LoginListener());
-		frame.setSubscribeListener(new SubscribeListener());
-		frame.setCheckSubscriptionListener(new CheckSubscriptionListener());
-		frame.setManagerManagePropertyListener(new ManagerManagePropertyListener());
-		frame.setLandlordManagePropertyListener(new LandlordManagePropertyListener());
-		frame.setPayFeesListener(new PayFeesListener());
-		frame.setRegisterPropertyListener(new RegisterPropertyListener());
-		frame.setDisplayOwnedListener(new DisplayOwnedListener());
-		frame.setManageFeesListener(new ManageFeesListener());
-		frame.setPeriodicalReportListener(new PeriodicalReportListener());
-		frame.setListUsersListener(new ListUsersListener());
-		frame.setListPropertiesListener(new ListPropertiesListener());
-		frame.setEmailListener(new EmailListener());
+		setListeners();
 	}
 	
 	public void setSystem(PRMSystem prms) {
@@ -144,6 +130,7 @@ public class MainController
 								frame = new ManagerFrame();
 							}
 							
+							setListeners();
 							frame.setVisible(true);
 						}
 					}
@@ -458,5 +445,23 @@ public class MainController
 				theDialog.setVisible(true);
 			}
 		}
+	}
+	
+	public void setListeners()
+	{
+		frame.setSearchListener(new SearchListener());
+		frame.setLoginListener(new LoginListener());
+		frame.setSubscribeListener(new SubscribeListener());
+		frame.setCheckSubscriptionListener(new CheckSubscriptionListener());
+		frame.setManagerManagePropertyListener(new ManagerManagePropertyListener());
+		frame.setLandlordManagePropertyListener(new LandlordManagePropertyListener());
+		frame.setPayFeesListener(new PayFeesListener());
+		frame.setRegisterPropertyListener(new RegisterPropertyListener());
+		frame.setDisplayOwnedListener(new DisplayOwnedListener());
+		frame.setManageFeesListener(new ManageFeesListener());
+		frame.setPeriodicalReportListener(new PeriodicalReportListener());
+		frame.setListUsersListener(new ListUsersListener());
+		frame.setListPropertiesListener(new ListPropertiesListener());
+		frame.setEmailListener(new EmailListener());
 	}
 }
