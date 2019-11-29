@@ -1,5 +1,6 @@
 package DatabaseHandler;
 
+import Model.Listing;
 import Model.Renter;
 
 public class RenterProfileRequest extends Request{
@@ -7,14 +8,17 @@ public class RenterProfileRequest extends Request{
 	
 	public RenterProfileRequest(Renter user) {
 		this.user = user;
-		response = new RenterProfileResponse();
+		response = new RenterProfileResponse(user);
 	}
 	@Override
 	public void request() {
-		String query = "SELECT *"
-				+ "FROM property NATURAL JOIN user"
-				+ "WHERE lastid > " + user.getLastSeenID();
-		RequestHandler.getInstance().queryDatabase(query, response);
+		user.setNewPropertyList(new Listing());
+		if(user.isSubscribed()) {
+			String query = "SELECT * "
+					+ "FROM property NATURAL JOIN user "
+					+ "WHERE pid > " + user.getLastSeenID();
+			RequestHandler.getInstance().queryDatabase(query, response);
+		}
 	}
 
 

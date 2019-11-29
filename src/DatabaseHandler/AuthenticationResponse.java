@@ -14,7 +14,7 @@ import Model.User;
 
 public class AuthenticationResponse implements Response{
 	private User user;
-	
+		
 	@Override
 	public void parseResponse(ResultSet result) {
 		try {

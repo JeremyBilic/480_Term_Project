@@ -77,15 +77,15 @@ public class Criteria {
 	public boolean fitsInCriteria(Property p)
 	{
 		boolean fitsCriteria = true;
-		if(!(this.getAddress().getStreet().equals(p.getAddress().getStreet()) && !this.getAddress().getStreet().isEmpty()))
+		if(!(this.getAddress().getStreet().equals(p.getAddress().getStreet())) && !this.getAddress().getStreet().isEmpty())
 		{
 			fitsCriteria = false;
 		}
-		else if(!(this.getAddress().getCity().equals(p.getAddress().getStreet()) && !this.getAddress().getCity().isEmpty()))
+		else if(!(this.getAddress().getCity().equals(p.getAddress().getStreet())) && !this.getAddress().getCity().isEmpty())
 		{
 			fitsCriteria = false;
 		}
-		else if(!(this.getAddress().getQuadrant().equals(p.getAddress().getStreet()) && !this.getAddress().getQuadrant().isEmpty()))
+		else if(!(this.getAddress().getQuadrant().equals(p.getAddress().getStreet())) && !this.getAddress().getQuadrant().isEmpty())
 		{
 			fitsCriteria = false;
 		}
@@ -108,19 +108,19 @@ public class Criteria {
 				fitsCriteria = false;
 			}
 		}
-		else if((Integer.parseInt(this.getNumberOfBathrooms()) != p.getNumberOfBathrooms()) && !this.getNumberOfBathrooms().isEmpty())
+		else if(!this.getNumberOfBathrooms().isEmpty() && (Integer.parseInt(this.getNumberOfBathrooms()) != p.getNumberOfBathrooms()))
 		{
 			fitsCriteria = false;
 		}
-		else if((Integer.parseInt(this.getNumberOfBedrooms()) != p.getNumberOfBedrooms()) && !this.getNumberOfBedrooms().isEmpty())
+		else if(!this.getNumberOfBedrooms().isEmpty() && (Integer.parseInt(this.getNumberOfBedrooms()) != p.getNumberOfBedrooms()))
 		{
 			fitsCriteria = false;
 		}
-		else if((this.getType()).equals(p.getType()) && !this.getType().isEmpty())
+		else if(!((this.getType()).equals(p.getType())) && !this.getType().isEmpty())
 		{
 			fitsCriteria = false;
 		}
-		else if((this.getState().equals(p.getState()) && !this.getState().isEmpty()))
+		else if(!((this.getState()).equals(p.getState())) && !this.getState().isEmpty())
 		{
 			fitsCriteria = false;
 		}

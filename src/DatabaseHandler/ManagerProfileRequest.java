@@ -1,6 +1,10 @@
 package DatabaseHandler;
 
+import java.util.ArrayList;
+
+import Model.Listing;
 import Model.Manager;
+import Model.User;
 
 public class ManagerProfileRequest extends Request {
 	private Manager user;
@@ -12,7 +16,10 @@ public class ManagerProfileRequest extends Request {
 	
 	@Override
 	public void request() {
-		String query = "SELECT *"
+		user.setPropertyLists(new Listing());
+		user.setUserList(new ArrayList<User>());
+		
+		String query = "SELECT * "
 				+ "FROM property NATURAL JOIN user";
 		
 		RequestHandler.getInstance().queryDatabase(query, response);

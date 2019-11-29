@@ -1,5 +1,7 @@
 package Client;
 
+import javax.swing.JFrame;
+
 public class Client {
 
 	public static void main(String[] args) {
@@ -9,6 +11,7 @@ public class Client {
 		controller.setSystem(system);
 		system.setController(controller);
 		uf.setVisible(true);
+		uf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 

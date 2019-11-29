@@ -18,7 +18,7 @@ public class UpdatePropertyStrategy implements ManagementStrategy {
 				+ ", country = " + property.getAddress().getCountry()
 				+ ", uid = " + property.getOwner().getId()
 				+ ", city = " + property.getAddress().getCity()
-				+ "WHERE pid = " + property.getId();
+				+ " WHERE pid = " + property.getId();
 		return query;
 	}
 }

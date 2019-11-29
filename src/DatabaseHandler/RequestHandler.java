@@ -28,8 +28,10 @@ public class RequestHandler {
 	public int queryDatabase(String query, Response response) {
 		try {
 			PreparedStatement statement = conn.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			response.parseResponse(result);
+			if (statement.execute()) {
+				ResultSet result = statement.getResultSet();
+				response.parseResponse(result);
+			}
 			
 		} catch (SQLException e) {
 			return e.getErrorCode();

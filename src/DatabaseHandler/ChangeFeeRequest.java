@@ -15,7 +15,7 @@ public class ChangeFeeRequest extends Request{
 	@Override
 	public void request() {
 		String query = "UPDATE property SET fee = " + newFee.getAmount()
-				+ "WHERE pid = " + pid;
+				+ " WHERE pid = " + pid;
 		RequestHandler.getInstance().queryDatabase(query, response);
 	}
 

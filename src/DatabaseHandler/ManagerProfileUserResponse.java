@@ -20,8 +20,17 @@ public class ManagerProfileUserResponse implements Response {
 				String fname = result.getString("fname");
 				String lname = result.getString("lname");
 				int uid = result.getInt("uid");
+				int type = result.getInt("utype");
+
 
 				User user = new User(fname, lname, uid);
+				if (type == 0) {
+					user.setType("renter");
+				} else if (type == 1) {
+					user.setType("landlord");
+				} else {
+					user.setType("manager");
+				}
 				manager.getUserList().add(user);
 			}
 			

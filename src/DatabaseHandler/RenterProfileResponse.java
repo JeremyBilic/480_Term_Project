@@ -12,6 +12,10 @@ import Model.Renter;
 public class RenterProfileResponse implements Response{
 	private Renter renter;
 	
+	RenterProfileResponse(Renter renter) {
+		this.renter = renter;
+	}
+	
 	@Override
 	public void parseResponse(ResultSet result) {
 		try {
@@ -39,7 +43,7 @@ public class RenterProfileResponse implements Response{
 
 				Address address = new Address(street, quadrant, city, province, country);
 				Landlord landlord = new Landlord(fname, lname, lid, email);
-
+				
 
 				renter.getNewPropertyList().addProperty(new Property(address, landlord, pid, state, numberOfBathrooms, numberOfBedrooms,
 						type, furnished, new Fee(fee)));

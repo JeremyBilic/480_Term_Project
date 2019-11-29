@@ -26,6 +26,10 @@ public class AuthenticationRequest extends Request{
 			response.foundError();
 		}
 		
+		if(getUser() != null && getUser().getType() == "renter") {
+			query = "UPDATE user SET lastid = (SELECT MAX(pid) from property) WHERE uid = " + getUser().getId();
+			RequestHandler.getInstance().queryDatabase(query, new AuthenticationResponse());
+		}
 	}
 	
 	public User getUser() {

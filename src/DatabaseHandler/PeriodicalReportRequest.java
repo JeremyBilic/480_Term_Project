@@ -15,20 +15,20 @@ public class PeriodicalReportRequest extends Request{
 	
 	@Override
 	public void request() {
-		String query = "SELECT *"
-				+ "FROM property";
+		String query = "SELECT * "
+				+ "FROM property NATURAL JOIN user";
 		RequestHandler.getInstance().queryDatabase(query, response);
 		int numListed = response.getCount();
 		
-		query = "SELECT *"
-				+ "FROM property"
+		query = "SELECT * "
+				+ "FROM property NATURAL JOIN user "
 				+ "WHERE state = \"rented\"";
 		RequestHandler.getInstance().queryDatabase(query, response);
 		ArrayList<Property> rentedProps = new ArrayList<Property>();
 		int numRented = response.getCount();
 		
-		query = "SELECT *"
-				+ "FROM property"
+		query = "SELECT * "
+				+ "FROM property NATURAL JOIN user"
 				+ "WHERE state = \"active\"";
 		RequestHandler.getInstance().queryDatabase(query, response);
 		int numActive = response.getCount();

@@ -13,7 +13,18 @@ public class ToggleRequest extends Request{
 	@Override
 	public void request() {
 		String query = "UPDATE user SET subscribed = " + !renter.isSubscribed()
-				+ "WHERE uid = " + renter.getId();
+				+ ", cstate = \"" + renter.getUserCriteria().getState()
+				+ "\" , cbathrooms = \"" + renter.getUserCriteria().getNumberOfBathrooms()
+				+ "\" , cbedrooms = \"" + renter.getUserCriteria().getNumberOfBedrooms()
+				+ "\" , ctype = \"" + renter.getUserCriteria().getType()
+				+ "\" , cfurnished = \"" + renter.getUserCriteria().getFurnished()
+				+ "\" , cstreet = \"" + renter.getUserCriteria().getAddress().getStreet()
+				+ "\" , cquadrant = \"" + renter.getUserCriteria().getAddress().getQuadrant()
+				+ "\" , ccity = \"" + renter.getUserCriteria().getAddress().getCity()
+				+ "\" , cprovince = \"" + renter.getUserCriteria().getAddress().getProvince()
+				+ "\" , ccountry = \"" + renter.getUserCriteria().getAddress().getCountry()
+				+ "\""
+				+ " WHERE uid = " + renter.getId();
 		RequestHandler.getInstance().queryDatabase(query, response);
 		
 	}

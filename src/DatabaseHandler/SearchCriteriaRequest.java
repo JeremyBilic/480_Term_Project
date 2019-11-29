@@ -14,8 +14,8 @@ public class SearchCriteriaRequest extends Request{
 	@Override
 	public void request() {
 		
-		String query = "SELECT *"
-				+ "FROM user NATURAL JOIN property"
+		String query = "SELECT * "
+				+ "FROM user NATURAL JOIN property "
 				+ "WHERE true";
 		
 		if (!criteria.getState().isEmpty()) {

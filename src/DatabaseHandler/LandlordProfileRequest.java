@@ -11,8 +11,8 @@ public class LandlordProfileRequest extends Request {
 	}
 	@Override
 	public void request() {
-		String query = "SELECT *"
-				+ "FROM property"
+		String query = "SELECT * "
+				+ "FROM property "
 				+ "WHERE uid =" + user.getId();
 		RequestHandler.getInstance().queryDatabase(query, response);
 	}

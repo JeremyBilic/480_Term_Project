@@ -37,6 +37,7 @@ public class PRMSystem {
 	public void toggleSubscription(Renter user) {
 		ToggleRequest req = new ToggleRequest(user);
 		req.request();
+		user.setSubscribed(!user.isSubscribed());
 	}
 	
 	public void getRenterProfile(Renter user) {
