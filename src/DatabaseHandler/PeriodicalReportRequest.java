@@ -24,7 +24,7 @@ public class PeriodicalReportRequest extends Request{
 				+ "FROM property NATURAL JOIN user "
 				+ "WHERE state = \"rented\"";
 		RequestHandler.getInstance().queryDatabase(query, response);
-		ArrayList<Property> rentedProps = new ArrayList<Property>();
+		ArrayList<Property> rentedProps = response.getProperties();
 		int numRented = response.getCount();
 		
 		query = "SELECT * "

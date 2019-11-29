@@ -82,10 +82,11 @@ public class MainController
 						tableModel.addColumn("CITY");
 						tableModel.addColumn("PROVINCE");
 						tableModel.addColumn("COUNTRY");
+						tableModel.addColumn("TYPE");
 						
 						for(int i = 0; i < theListing.getProperties().size(); i++)
 						{
-							String[] propertyAttributes = new String[10];
+							String[] propertyAttributes = new String[11];
 							propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
 							propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
 							propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
@@ -96,6 +97,7 @@ public class MainController
 							propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
 							propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
 							propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
+							propertyAttributes[10] = theListing.getProperties().get(i).getType();
 							tableModel.addRow(propertyAttributes);
 						}
 						
@@ -237,10 +239,11 @@ public class MainController
 				tableModel.addColumn("CITY");
 				tableModel.addColumn("PROVINCE");
 				tableModel.addColumn("COUNTRY");
+				tableModel.addColumn("TYPE");
 				
 				for(int i = 0; i < theListing.getProperties().size(); i++)
 				{
-					String[] propertyAttributes = new String[10];
+					String[] propertyAttributes = new String[11];
 					propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
 					propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
 					propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
@@ -251,6 +254,7 @@ public class MainController
 					propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
 					propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
 					propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
+					propertyAttributes[10] = theListing.getProperties().get(i).getType();
 					tableModel.addRow(propertyAttributes);
 				}
 				
@@ -271,6 +275,7 @@ public class MainController
 				String state = JOptionPane.showInputDialog("Enter the new state:");
 				theListing.getProperties().get(frame.getTable().getSelectedRow()).setState(state);
 				prms.updateProperty(theListing.getProperties().get(frame.getTable().getSelectedRow()));
+				prms.getManagerProfile((Manager)theUser);
 			}
 		}
 		
@@ -414,10 +419,11 @@ public class MainController
 			tableModel.addColumn("PROVINCE");
 			tableModel.addColumn("COUNTRY");
 			tableModel.addColumn("FEE");
+			tableModel.addColumn("TYPE");
 			
 			for(int i = 0; i < theListing.getProperties().size(); i++)
 			{
-				String[] propertyAttributes = new String[11];
+				String[] propertyAttributes = new String[12];
 				propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
 				propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
 				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
@@ -429,6 +435,7 @@ public class MainController
 				propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
 				propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
 				propertyAttributes[10] = String.valueOf(theListing.getProperties().get(i).getFee().getAmount());
+				propertyAttributes[11] = theListing.getProperties().get(i).getType();
 				tableModel.addRow(propertyAttributes);
 			}
 			
@@ -454,9 +461,11 @@ public class MainController
 			tableModel.addColumn("CITY");
 			tableModel.addColumn("PROVINCE");
 			tableModel.addColumn("COUNTRY");
+			tableModel.addColumn("FEE");
+			tableModel.addColumn("TYPE");
 			for(int i = 0; i < theListing.getProperties().size(); i++)
 			{
-				String[] propertyAttributes = new String[10];
+				String[] propertyAttributes = new String[12];
 				propertyAttributes[0] = String.valueOf(theListing.getProperties().get(i).getId());
 				propertyAttributes[1] = String.valueOf(theListing.getProperties().get(i).getNumberOfBedrooms());
 				propertyAttributes[2] = String.valueOf(theListing.getProperties().get(i).getNumberOfBathrooms());
@@ -467,6 +476,8 @@ public class MainController
 				propertyAttributes[7] = theListing.getProperties().get(i).getAddress().getCity();
 				propertyAttributes[8] = theListing.getProperties().get(i).getAddress().getProvince();
 				propertyAttributes[9] = theListing.getProperties().get(i).getAddress().getCountry();
+				propertyAttributes[10] = String.valueOf(theListing.getProperties().get(i).getFee().getAmount());
+				propertyAttributes[11] = theListing.getProperties().get(i).getType();
 				tableModel.addRow(propertyAttributes);
 			}
 			frame.setTableModel(tableModel);

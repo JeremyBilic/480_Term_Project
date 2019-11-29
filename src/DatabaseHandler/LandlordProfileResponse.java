@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import Model.Address;
 import Model.Fee;
 import Model.Landlord;
+import Model.Listing;
 import Model.Property;
 
 public class LandlordProfileResponse implements Response{
@@ -18,6 +19,7 @@ public class LandlordProfileResponse implements Response{
 	@Override
 	public void parseResponse(ResultSet result) {
 		try {
+			landlord.setOwnedPropertyList(new Listing());
 
 			while(result.next()) {
 				int pid = result.getInt("pid");
